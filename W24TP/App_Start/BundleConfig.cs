@@ -19,6 +19,7 @@ namespace W24TP
                       "~/Scripts/clean-blog.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/fontawesome.min.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/clean-blog.css"));
         }
