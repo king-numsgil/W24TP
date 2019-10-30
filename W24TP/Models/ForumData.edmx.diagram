@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5bf6baf5849c416197ab3315019eacbb" Name="Diagram1">
+        <EntityTypeShape EntityType="ForumONIModel.AspNetUserRole" Width="1.5" PointX="1" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.AspNetUser" Width="2.125" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Category" Width="1.5" PointX="5.375" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Message" Width="1.5" PointX="5.375" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Reponse" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ForumONIModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForumONIModel.FK_Categories_AspNetUsers" ManuallyRouted="false" >
+          <ConnectorPoint PointX="2.625" PointY="6.077020351232858" />
+          <ConnectorPoint PointX="5.11468684" PointY="6.077020351232858" />
+          <ConnectorPoint PointX="5.11468684" PointY="7.327020351232858" />
+          <ConnectorPoint PointX="5.718748" PointY="7.327020351232858" />
+          <ConnectorPoint PointX="5.718748" PointY="7.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="ForumONIModel.FK_Messages_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ForumONIModel.FK_Reponses_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="ForumONIModel.FK_Messages_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ForumONIModel.FK_Reponses_Messages" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
