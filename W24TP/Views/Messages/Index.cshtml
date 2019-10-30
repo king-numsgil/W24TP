@@ -1,69 +1,44 @@
 ﻿@model IEnumerable<W24TP.Models.Message>
-
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MsgTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MsgText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.View)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th></th>
-    </tr>
+<p>@Html.ActionLink("Create New", "Create")</p>
+<table class="table table-sm table-striped table-hover">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MsgTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MsgText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.View)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MsgID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MsgID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MsgID })
-        </td>
-    </tr>
-}
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.MsgTitle)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.MsgText)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.CreationDate)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.View)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.IsActive)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.AspNetUser.Email)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Category.CategoryName)</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@Html.DisplayFor(modelItem => item.MsgTitle)</td>
+                <td>@Html.DisplayFor(modelItem => item.MsgText)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.View)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                <td>
+                    <a href="/Messages/Edit/@item.MsgID"><i class="icon ion-md-create"></i></a>
+                    <a href="/Messages/Details/@item.MsgID"><i class="icon ion-md-clipboard"></i></a>
+                    <a href="/Messages/Delete/@item.MsgID"><i class="icon ion-md-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

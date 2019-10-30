@@ -27,9 +27,6 @@
                 <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
                 <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id=item.CatID })
-                    @Html.ActionLink("Details", "Details", new { id=item.CatID })
-                    @Html.ActionLink("Delete", "Delete", new { id=item.CatID })*@
                     <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
                     <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
                     <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
