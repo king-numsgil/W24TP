@@ -38,8 +38,8 @@
         {
             <div class="col-sm-4 px-lg-1">
                 <div class="card text-center">
+                    <h5 class="card-header">@post.MsgTitle</h5>
                     <div class="card-body">
-                        <h5 class="card-title">@post.MsgTitle</h5>                        
                         <h6 class="card-subtitle">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</h6>
                         <p class="card-text">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
                         <a href="#" class="btn-sm btn-primary">Open</a>
