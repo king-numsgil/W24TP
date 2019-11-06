@@ -24,7 +24,7 @@
             <tr>
                 <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
                 <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-                <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
+                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
                 <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
                 <td>
                     <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
