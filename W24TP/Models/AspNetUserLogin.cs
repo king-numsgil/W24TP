@@ -12,16 +12,12 @@ namespace W24TP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Reponse
+    public partial class AspNetUserLogin
     {
-        public int RepID { get; set; }
-        public string RepText { get; set; }
-        public Nullable<int> MsgID { get; set; }
-        public string UserID { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Message Message { get; set; }
     }
 }

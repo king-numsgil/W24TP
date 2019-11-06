@@ -178,10 +178,16 @@
     </Compile>
     <Compile Include="Helpers\PrettyDate.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>ForumData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>ForumData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserRole.cs">
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>ForumData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>ForumData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
@@ -222,8 +228,8 @@
     <Content Include="Global.asax" />
     <Content Include="Models\ForumData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ForumData.edmx</DependentUpon>
       <LastGenOutput>ForumData.Context.cs</LastGenOutput>
+      <DependentUpon>ForumData.edmx</DependentUpon>
     </Content>
     <Content Include="Models\ForumData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
