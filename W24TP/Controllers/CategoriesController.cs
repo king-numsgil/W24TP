@@ -17,8 +17,20 @@ namespace W24TP.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            var categories = db.Categories.Include(c => c.AspNetUser);
-            return View(categories.ToList());
+            //var categories = db.Categories.Include(c => c.AspNetUser);
+            //return View(categories.ToList());
+
+            var categories = (from c in db.Categories
+                              select new CategoryDisplay
+                              {
+                                  CatID = c.CatID,
+                                  CategoryName = c.CategoryName,
+                                  CreationDate = c.CreationDate,
+                                  User = db.AspNetUsers
+                                    .Where(t=>t.UserName == c.User)
+                                    .Select(t=>t.UserName)
+                              }).ToList();
+            return View(categories);
         }
 
         // GET: Categories/Details/5
@@ -128,5 +140,13 @@ namespace W24TP.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+
+    public class CategoryDisplay
+    {
+        public int CatID { get; set; }
+        public string CategoryName { get; set; }
+        public DateTime CreationDate { get; set; }
+        public IQueryable<string> User { get; set; }
     }
 }

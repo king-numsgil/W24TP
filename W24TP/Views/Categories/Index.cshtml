@@ -1,4 +1,4 @@
-﻿@model IEnumerable<W24TP.Models.Category>
+﻿@model IEnumerable<W24TP.Controllers.CategoryDisplay>
 @{
     ViewBag.Title = "Index";
 }
@@ -10,10 +10,9 @@
 
     <thead>
         <tr>
-            <th scope="col">@Html.DisplayNameFor(model => model.CategoryName)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.IsActive)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.CreationDate)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.AspNetUser.Email)</th>
+            <th scope="col">Category Name</th>           
+            <th scope="col">Creation Date</th>
+            <th scope="col">Creator's Username</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -21,17 +20,16 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
-                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
-                <td>
-                    <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
-                    <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
-                    <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
-                </td>
-            </tr>
+        <tr onclick="">
+            <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
+            <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
+            <td>
+                <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
+                <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
+                <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
+            </td>
+        </tr>
         }
     </tbody>
 
