@@ -22,8 +22,8 @@
         {
         <tr onclick="">
             <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
-            <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
-            <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
+            <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.User)</td>
             <td>
                 <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
                 <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
