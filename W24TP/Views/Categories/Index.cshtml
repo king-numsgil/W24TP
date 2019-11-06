@@ -47,54 +47,5 @@
                 </div>
             </div>
         }
-
-        @*<div class="col-sm-4 px-lg-1">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Post Title #2</h5>
-                        <p class="card-text">Content of the first post in the thread</p>
-                        <a href="#" class="btn-sm btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 px-lg-1">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Post Title #3</h5>
-                        <p class="card-text">Content of the first post in the thread</p>
-                        <a href="#" class="btn-sm btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>*@
     }
 </div>
-
-@*<table class="table table-sm table-striped table-hover">
-
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Creation Date</th>
-                <th scope="col">Creator's Username</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr onclick="">
-                <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
-                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.User)</td>
-                <td>
-                    <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
-                    <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
-                    <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
-                </td>
-            </tr>
-            }
-        </tbody>
-
-    </table>*@
