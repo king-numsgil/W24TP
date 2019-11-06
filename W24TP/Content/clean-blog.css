@@ -31,6 +31,7 @@ h6 {
 
 h6.card-subtitle {
     font-weight: 100 !important;
+    font-style: italic;
 }
 
 a {
