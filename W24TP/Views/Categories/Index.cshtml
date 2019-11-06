@@ -39,8 +39,9 @@
             <div class="col-sm-4 px-lg-1">
                 <div class="card text-center">
                     <div class="card-body">
-                        <h5 class="card-title">@post.MsgTitle</h5>
-                        <p class="card-text">@post.AspNetUser.UserName</p>
+                        <h5 class="card-title">@post.MsgTitle</h5>                        
+                        <h6 class="card-subtitle">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</h6>
+                        <p class="card-text">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
                         <a href="#" class="btn-sm btn-primary">Open</a>
                     </div>
                 </div>
@@ -71,29 +72,29 @@
 
 @*<table class="table table-sm table-striped table-hover">
 
-    <thead>
-        <tr>
-            <th scope="col">Name</th>           
-            <th scope="col">Creation Date</th>
-            <th scope="col">Creator's Username</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Creator's Username</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr onclick="">
-            <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
-            <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
-            <td>@Html.DisplayFor(modelItem => item.User)</td>
-            <td>
-                <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
-                <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
-                <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
-            </td>
-        </tr>
-        }
-    </tbody>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr onclick="">
+                <td scope="row">@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.User)</td>
+                <td>
+                    <a href="/Categories/Edit/@item.CatID"><i class="icon ion-md-create"></i></a>
+                    <a href="/Categories/Details/@item.CatID"><i class="icon ion-md-clipboard"></i></a>
+                    <a href="/Categories/Delete/@item.CatID"><i class="icon ion-md-trash"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
 
-</table>*@
+    </table>*@
