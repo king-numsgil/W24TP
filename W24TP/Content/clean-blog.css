@@ -29,6 +29,10 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+h6.card-subtitle {
+    font-weight: 100 !important;
+}
+
 a {
   color: #212529;
   transition: all 0.2s;
