@@ -26,9 +26,7 @@ namespace W24TP.Controllers
                                   CatID = c.CatID,
                                   CategoryName = c.CategoryName,
                                   CreationDate = c.CreationDate,
-                                  User = db.AspNetUsers
-                                    .Where(t=>t.UserName == c.User)
-                                    .Select(t=>t.UserName)
+                                  User = c.AspNetUser.UserName
                               }).ToList();
             return View(categories);
         }
@@ -69,7 +67,7 @@ namespace W24TP.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.User);
+            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.UserID);
             return View(category);
         }
 
@@ -85,7 +83,7 @@ namespace W24TP.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.User);
+            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.UserID);
             return View(category);
         }
 
@@ -102,7 +100,7 @@ namespace W24TP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.User);
+            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.UserID);
             return View(category);
         }
 
@@ -147,6 +145,6 @@ namespace W24TP.Controllers
         public int CatID { get; set; }
         public string CategoryName { get; set; }
         public DateTime CreationDate { get; set; }
-        public IQueryable<string> User { get; set; }
+        public string User { get; set; }
     }
 }

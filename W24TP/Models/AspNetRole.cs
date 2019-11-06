@@ -12,26 +12,18 @@ namespace W24TP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Message
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Message()
+        public AspNetRole()
         {
-            this.Reponses = new HashSet<Reponse>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int MsgID { get; set; }
-        public string MsgTitle { get; set; }
-        public string MsgText { get; set; }
-        public int CatID { get; set; }
-        public string UserID { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public string View { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reponse> Reponses { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }
