@@ -17,8 +17,23 @@ namespace W24TP.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            var messages = db.Messages.Include(m => m.AspNetUser).Include(m => m.Category);
-            return View(messages.ToList());
+            //var messages = db.Messages.Include(m => m.AspNetUser).Include(m => m.Category);
+            //return View(messages.ToList());
+
+            var messages = (from m in db.Messages
+                            select new MessageDisplay
+                            {
+                                MsgID = m.MsgID,
+                                MsgTitle = m.MsgTitle,
+                                /* ici nbr de messages/réponses */
+                                MsgText = m.MsgText,
+                                CategoryName = m.Category.CategoryName,
+                                User = m.AspNetUser.UserName,
+                                CreationDate = m.CreationDate,
+                                Views = m.View,
+                                IsActive = m.IsActive
+                            }).ToList();
+            return View(messages);
         }
 
         // GET: Messages/Details/5
@@ -132,5 +147,17 @@ namespace W24TP.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+
+    public class MessageDisplay
+    {
+        public int MsgID { get; set; }
+        public string MsgTitle { get; set; }
+        public string MsgText { get; set; }
+        public string CategoryName { get; set; }
+        public string User { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string Views { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

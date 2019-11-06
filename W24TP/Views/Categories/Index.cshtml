@@ -10,59 +10,62 @@
 <div class="row mx-lg-n1">
     @foreach (var item in Model)
     {
-    <div class="col-12 px-lg-1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-        <div class="row justify-content-between">
-            <div class="col">
-                <a class="btn btn-outline-info btn-block" href="#" role="button">@item.CategoryName</a>
-            </div>
-            <div class="col-5">
-                <div class="btn-group" role="group" aria-label="Info and Edit">
-                    <button type="button" class="btn btn-secondary" disabled>
-                        By @Html.DisplayFor(modelItem => item.User)
-                    </button>
-                    <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
-                        <i class="icon ion-md-create"></i>
-                    </a>
-                    <a class="btn btn-secondary" href="/Categories/Details/@item.CatID" role="button">
-                        <i class="icon ion-md-clipboard"></i>
-                    </a>
-                    <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
-                        <i class="icon ion-md-trash"></i>
-                    </a>
+        <div class="col-12 px-lg-1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <a class="btn btn-outline-info btn-block" href="#" role="button">@item.CategoryName</a>
+                </div>
+                <div class="col-5 text-right">
+                    <div class="btn-group" role="group" aria-label="Info and Edit">
+                        <button type="button" class="btn btn-secondary" disabled>
+                            By @Html.DisplayFor(modelItem => item.User)
+                        </button>
+                        <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
+                            <i class="icon ion-md-create"></i>
+                        </a>
+                        <a class="btn btn-secondary" href="/Categories/Details/@item.CatID" role="button">
+                            <i class="icon ion-md-clipboard"></i>
+                        </a>
+                        <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
+                            <i class="icon ion-md-trash"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-sm-4 px-lg-1">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Post Title #1</h5>
-                <p class="card-text">Content of the first post in the thread</p>
-                <a href="#" class="btn-sm btn-primary">Open</a>
+        foreach (var post in item.LastThreePosts)
+        {
+            <div class="col-sm-4 px-lg-1">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">@post.MsgTitle</h5>
+                        <p class="card-text">@post.AspNetUser.UserName</p>
+                        <a href="#" class="btn-sm btn-primary">Open</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        }
 
-    <div class="col-sm-4 px-lg-1">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Post Title #2</h5>
-                <p class="card-text">Content of the first post in the thread</p>
-                <a href="#" class="btn-sm btn-primary">Open</a>
+        @*<div class="col-sm-4 px-lg-1">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Title #2</h5>
+                        <p class="card-text">Content of the first post in the thread</p>
+                        <a href="#" class="btn-sm btn-primary">Open</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="col-sm-4 px-lg-1">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Post Title #3</h5>
-                <p class="card-text">Content of the first post in the thread</p>
-                <a href="#" class="btn-sm btn-primary">Open</a>
-            </div>
-        </div>
-    </div>
+            <div class="col-sm-4 px-lg-1">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Post Title #3</h5>
+                        <p class="card-text">Content of the first post in the thread</p>
+                        <a href="#" class="btn-sm btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>*@
     }
 </div>
 

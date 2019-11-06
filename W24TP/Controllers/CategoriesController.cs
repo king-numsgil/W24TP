@@ -26,7 +26,11 @@ namespace W24TP.Controllers
                                   CatID = c.CatID,
                                   CategoryName = c.CategoryName,
                                   CreationDate = c.CreationDate,
-                                  User = c.AspNetUser.UserName
+                                  User = c.AspNetUser.UserName,
+                                  LastThreePosts = db.Messages
+                                    .Where(t=>t.CatID == c.CatID)
+                                    .OrderByDescending(t=>t.CreationDate)
+                                    .Take(3).ToList(),
                               }).ToList();
             return View(categories);
         }
@@ -146,5 +150,6 @@ namespace W24TP.Controllers
         public string CategoryName { get; set; }
         public DateTime CreationDate { get; set; }
         public string User { get; set; }
+        public List<Message> LastThreePosts { get; set; }
     }
 }

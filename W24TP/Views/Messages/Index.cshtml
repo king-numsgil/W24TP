@@ -1,22 +1,22 @@
-﻿@model IEnumerable<W24TP.Models.Message>
+﻿@model IEnumerable<W24TP.Controllers.MessageDisplay>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Messages";
 }
 
-<h2>Index</h2>
+<h2>Messages</h2>
 
 <p>@Html.ActionLink("Create New", "Create")</p>
 <table class="table table-sm table-striped table-hover">
 
     <thead>
         <tr>
-            <th scope="col">@Html.DisplayNameFor(model => model.MsgTitle)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.MsgText)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.CreationDate)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.View)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.IsActive)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.AspNetUser.Email)</th>
-            <th scope="col">@Html.DisplayNameFor(model => model.Category.CategoryName)</th>
+            <th scope="col">Title</th>
+            @*<th scope="col">Texte</th>*@
+            <th scope="col">Creation Date</th>
+            <th scope="col"># Views</th>
+            <th scope="col">IsActive?</th>
+            <th scope="col">Creator</th>
+            <th scope="col">Category</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -26,12 +26,12 @@
         {
             <tr>
                 <td scope="row">@Html.DisplayFor(modelItem => item.MsgTitle)</td>
-                <td>@Html.DisplayFor(modelItem => item.MsgText)</td>
-                <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.View)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.MsgText)</td>*@
+                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Views)</td>
                 <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-                <td>@Html.DisplayFor(modelItem => item.AspNetUser.Email)</td>
-                <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.User)</td>
+                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
                 <td>
                     <a href="/Messages/Edit/@item.MsgID"><i class="icon ion-md-create"></i></a>
                     <a href="/Messages/Details/@item.MsgID"><i class="icon ion-md-clipboard"></i></a>
