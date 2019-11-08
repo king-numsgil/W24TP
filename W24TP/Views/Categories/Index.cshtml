@@ -13,7 +13,14 @@
         <div class="col-12 px-lg-1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
             <div class="row justify-content-between">
                 <div class="col">
-                    <a class="btn btn-outline-success btn-block" href="#" role="button">@item.CategoryName</a>
+                    @Html.ActionLink(item.CategoryName,
+                        "Details",
+                        new { id = item.CatID},
+                        new
+                        {
+                            @class = "btn btn-outline-success btn-block",
+                            role = "button"
+                        })
                 </div>
                 <div class="col-4 text-right">
                     <div class="btn-group" role="group" aria-label="Info and Edit">
@@ -22,9 +29,6 @@
                         </button>
                         <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
                             <i class="icon ion-md-create"></i>
-                        </a>
-                        <a class="btn btn-secondary" href="/Categories/Details/@item.CatID" role="button">
-                            <i class="icon ion-md-clipboard"></i>
                         </a>
                         <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
                             <i class="icon ion-md-trash"></i>
