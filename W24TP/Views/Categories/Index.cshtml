@@ -13,9 +13,9 @@
         <div class="col-12 px-lg-1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
             <div class="row justify-content-between">
                 <div class="col">
-                    <a class="btn btn-outline-info btn-block" href="#" role="button">@item.CategoryName</a>
+                    <a class="btn btn-outline-success btn-block" href="#" role="button">@item.CategoryName</a>
                 </div>
-                <div class="col-5 text-right">
+                <div class="col-4 text-right">
                     <div class="btn-group" role="group" aria-label="Info and Edit">
                         <button type="button" class="btn btn-secondary" disabled>
                             By @Html.DisplayFor(modelItem => item.User)
@@ -38,10 +38,18 @@
             @foreach (var post in item.LastThreePosts)
             {
             <div class="card text-center" style="width: 19.4rem">
-                <h5 class="card-header">@post.MsgTitle</h5>
+                <h5 class="card-header" style="padding: 0">
+                    @Html.ActionLink(post.MsgTitle,
+                        "Details",
+                        "Messages",
+                        new { id = post.MsgID },
+                        new
+                        {
+                            @class = "btn btn-post btn-block"
+                        })
+                </h5>
                 <div class="card-body">
                     <p class="card-text">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
-                    @Html.ActionLink("Open", "Details", "Messages", new { id = post.MsgID }, new { @class = "btn-sm btn-primary" })
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</small>
