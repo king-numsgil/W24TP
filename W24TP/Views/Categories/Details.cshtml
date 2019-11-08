@@ -32,3 +32,33 @@
         </div>
     </div>
 </div>
+
+<hr />
+
+@foreach (var msg in Model.Messages)
+{
+    <div class="row justify-content-center" style="margin-bottom: 1rem">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header">@msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName</span></div>
+                <div class="card-body">
+                    <p class="card-text">@msg.MsgText</p>
+                </div>
+                <div class="card-footer" style="padding: 0">
+                    <div class="btn-group" style="width: 100%">
+                        @if (msg.IsActive.HasValue && msg.IsActive.Value)
+                        {
+                            <a class="btn btn-success disabled" role="button" href="#">Active</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-danger disabled" role="button" href="#">Inactive</a>
+                        }
+
+                        <a class="btn btn-info" role="button" href="#">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
