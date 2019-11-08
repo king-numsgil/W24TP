@@ -34,18 +34,20 @@
             </div>
         </div>
 
-        foreach (var post in item.LastThreePosts)
-        {
-            <div class="col-sm-4 px-lg-1">
-                <div class="card text-center">
-                    <h5 class="card-header">@post.MsgTitle</h5>
-                    <div class="card-body">
-                        <h6 class="card-subtitle">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</h6>
-                        <p class="card-text">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
-                        @Html.ActionLink("Open", "Details", "Messages", new { id = post.MsgID }, new { @class = "btn-sm btn-primary" })
-                    </div>
+        <div class="card-group">
+            @foreach (var post in item.LastThreePosts)
+            {
+            <div class="card text-center" style="width: 19.5rem">
+                <h5 class="card-header">@post.MsgTitle</h5>
+                <div class="card-body">
+                    <p class="card-text">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
+                    @Html.ActionLink("Open", "Details", "Messages", new { id = post.MsgID }, new { @class = "btn-sm btn-primary" })
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</small>
                 </div>
             </div>
-        }
+            }
+        </div>
     }
 </div>
