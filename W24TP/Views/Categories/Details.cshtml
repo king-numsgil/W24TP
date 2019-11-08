@@ -1,4 +1,4 @@
-﻿@model W24TP.Models.Category
+﻿@model W24TP.Controllers.CategoryDisplay
 
 @{
     ViewBag.Title = "Details";
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            Username
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AspNetUser.Email)
+            @Model.User
         </dd>
 
     </dl>

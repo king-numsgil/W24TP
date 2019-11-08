@@ -27,10 +27,15 @@ namespace W24TP.Controllers
                                   CategoryName = c.CategoryName,
                                   CreationDate = c.CreationDate,
                                   User = c.AspNetUser.UserName,
+                                  IsActive = c.IsActive,
                                   LastThreePosts = db.Messages
-                                    .Where(t=>t.CatID == c.CatID)
-                                    .OrderByDescending(t=>t.CreationDate)
+                                    .Where(t => t.CatID == c.CatID)
+                                    .OrderByDescending(t => t.CreationDate)
                                     .Take(3).ToList(),
+                                  Messages = db.Messages
+                                      .Where(t => t.CatID == c.CatID)
+                                      .OrderByDescending(t => t.CreationDate)
+                                      .ToList()
                               }).ToList();
             return View(categories);
         }
@@ -47,7 +52,22 @@ namespace W24TP.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(new CategoryDisplay
+            {
+                CatID = category.CatID,
+                CategoryName = category.CategoryName,
+                CreationDate = category.CreationDate,
+                User = category.AspNetUser.UserName,
+                IsActive = category.IsActive,
+                LastThreePosts = db.Messages
+                    .Where(t => t.CatID == category.CatID)
+                    .OrderByDescending(t => t.CreationDate)
+                    .Take(3).ToList(),
+                Messages = db.Messages
+                    .Where(t => t.CatID == category.CatID)
+                    .OrderByDescending(t => t.CreationDate)
+                    .ToList()
+            });
         }
 
         // GET: Categories/Create
@@ -150,6 +170,8 @@ namespace W24TP.Controllers
         public string CategoryName { get; set; }
         public DateTime CreationDate { get; set; }
         public string User { get; set; }
+        public bool IsActive { get; set; }
         public List<Message> LastThreePosts { get; set; }
+        public List<Message> Messages { get; set; }
     }
 }
