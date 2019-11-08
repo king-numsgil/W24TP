@@ -25,12 +25,11 @@ namespace W24TP.Controllers
                             {
                                 MsgID = m.MsgID,
                                 MsgTitle = m.MsgTitle,
-                                /* ici nbr de messages/réponses */
+                                Views = m.View,
                                 MsgText = m.MsgText,
                                 CategoryName = m.Category.CategoryName,
                                 User = m.AspNetUser.UserName,
                                 CreationDate = m.CreationDate,
-                                Views = m.View,
                                 IsActive = m.IsActive
                             }).ToList();
             return View(messages);
@@ -39,7 +38,9 @@ namespace W24TP.Controllers
         // GET: Messages/Details/5
         public ActionResult Details(int? id, string path)
         {
+            //Retiens l'url d'ou l'utilisateur arrive pour un 'Back to List' plus dynamique
             ViewBag.OldUrl = path;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -49,7 +50,28 @@ namespace W24TP.Controllers
             {
                 return HttpNotFound();
             }
-            return View(message);
+            else
+            {
+                var post = (from p in db.Messages
+                            where p.MsgID == id
+                            select new PostDisplay
+                            {
+                                MsgID = p.MsgID,
+                                MsgTitle = p.MsgTitle,
+                                Views = p.View,
+                                MsgText = p.MsgText,
+                                CatID = p.Category.CatID,
+                                CategoryName = p.Category.CategoryName,
+                                User = p.AspNetUser.UserName,
+                                CreationDate = p.CreationDate,
+                                IsActive = p.IsActive,
+                                RepliesList = db.Reponses
+                                    .Where(r => r.MsgID == p.MsgID)
+                                    .OrderByDescending(r => r.CreationDate)
+                                    .ToList()
+                            }).FirstOrDefault();
+                return View(post);
+            }
         }
 
         // GET: Messages/Create
@@ -148,6 +170,20 @@ namespace W24TP.Controllers
             }
             base.Dispose(disposing);
         }
+    }
+
+    public class PostDisplay
+    {
+        public int MsgID { get; set; }
+        public string MsgTitle { get; set; }
+        public string Views { get; set; }
+        public string MsgText { get; set; }
+        public int CatID { get; set; }
+        public string CategoryName { get; set; }
+        public string User { get; set; }
+        public DateTime CreationDate { get; set; }
+        public bool? IsActive { get; set; }
+        public List<Reponse> RepliesList { get; set; }
     }
 
     public class MessageDisplay

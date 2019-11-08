@@ -1,4 +1,4 @@
-﻿@model W24TP.Models.Message
+﻿@model W24TP.Controllers.PostDisplay
 
     @{
         ViewBag.Title = "Details";
@@ -11,56 +11,28 @@
             <a class="btn btn-secondary" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
                 <i class="icon ion-md-create"></i>
             </a>
-            <h2>@Html.DisplayFor(model => model.MsgTitle)</h2>
+            <h2>@Model.MsgTitle</h2>
             <h6 class="text-muted card-subtitle">
-                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate)
+                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Model.User | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
             </h6>
             
             
         </div>
         <dl class="dl-horizontal card">
             <dd>
-                @Html.DisplayFor(model => model.MsgText)
+                @Model.MsgText
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.CreationDate)
+                Views : @Model.Views
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.View)
-            </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.View)
+                IsActive : @Model.IsActive
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.IsActive)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.AspNetUser.Email)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Category.CategoryName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Category.CategoryName)
+                CategoryName : @Model.CategoryName
             </dd>
 
         </dl>
