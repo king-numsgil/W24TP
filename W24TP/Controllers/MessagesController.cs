@@ -37,8 +37,9 @@ namespace W24TP.Controllers
         }
 
         // GET: Messages/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string path)
         {
+            ViewBag.OldUrl = path;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

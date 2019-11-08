@@ -46,7 +46,7 @@
                     @Html.ActionLink(post.MsgTitle,
                         "Details",
                         "Messages",
-                        new { id = post.MsgID },
+                        new { id = post.MsgID, path = "Categories" },
                         new
                         {
                             @class = "btn btn-post btn-block"
