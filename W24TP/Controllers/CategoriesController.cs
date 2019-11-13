@@ -17,27 +17,22 @@ namespace W24TP.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            //var categories = db.Categories.Include(c => c.AspNetUser);
-            //return View(categories.ToList());
-
-            var categories = (from c in db.Categories
-                select new CategoryDisplay
-                {
-                    CatID = c.CatID,
-                    CategoryName = c.CategoryName,
-                    CreationDate = c.CreationDate,
-                    User = c.AspNetUser.UserName,
-                    IsActive = c.IsActive,
-                    LastThreePosts = db.Messages
-                        .Where(t => t.CatID == c.CatID)
+            return View(db.Categories.Select(cat => new CategoryDisplay
+            {
+                CatID = cat.CatID,
+                CategoryName = cat.CategoryName,
+                CreationDate = cat.CreationDate,
+                User = cat.AspNetUser.UserName,
+                IsActive = cat.IsActive,
+                LastThreePosts = db.Messages
+                        .Where(t => t.CatID == cat.CatID)
                         .OrderByDescending(t => t.CreationDate)
                         .Take(3).ToList(),
-                    Messages = db.Messages
-                        .Where(t => t.CatID == c.CatID)
+                Messages = db.Messages
+                        .Where(t => t.CatID == cat.CatID)
                         .OrderByDescending(t => t.CreationDate)
                         .ToList()
-                }).ToList();
-            return View(categories);
+            }).ToList());
         }
 
         // GET: Categories/Details/5
