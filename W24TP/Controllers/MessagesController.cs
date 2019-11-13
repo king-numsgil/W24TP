@@ -54,26 +54,27 @@ namespace W24TP.Controllers
             else
             {
                 message.View++;
-                var post = (from p in db.Messages
-                    where p.MsgID == id
-                    select new PostDisplay
-                    {
-                        MsgID = p.MsgID,
-                        MsgTitle = p.MsgTitle,
-                        Views = p.View,
-                        MsgText = p.MsgText,
-                        CatID = p.Category.CatID,
-                        CategoryName = p.Category.CategoryName,
-                        User = p.AspNetUser.UserName,
-                        UserID = p.AspNetUser.Id,
-                        CreationDate = p.CreationDate,
-                        IsActive = p.IsActive,
-                        RepliesList = db.Reponses
-                            .Where(r => r.MsgID == p.MsgID)
+
+                db.Entry(message).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return View(new PostDisplay
+                {
+                    MsgID = message.MsgID,
+                    MsgTitle = message.MsgTitle,
+                    Views = message.View,
+                    MsgText = message.MsgText,
+                    CatID = message.CatID,
+                    CategoryName = message.Category.CategoryName,
+                    User = message.AspNetUser.UserName,
+                    UserID = message.AspNetUser.Id,
+                    CreationDate = message.CreationDate,
+                    IsActive = message.IsActive,
+                    RepliesList = db.Reponses
+                            .Where(r => r.MsgID == message.MsgID)
                             .OrderByDescending(r => r.CreationDate)
                             .ToList()
-                    }).FirstOrDefault();
-                return View(post);
+                });
             }
         }
 
@@ -194,7 +195,7 @@ namespace W24TP.Controllers
         public string User { get; set; }
         public string UserID { get; set; }
         public DateTime CreationDate { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public List<Reponse> RepliesList { get; set; }
     }
 
@@ -207,6 +208,6 @@ namespace W24TP.Controllers
         public string User { get; set; }
         public DateTime CreationDate { get; set; }
         public int Views { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }
