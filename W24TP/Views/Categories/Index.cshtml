@@ -5,7 +5,10 @@
 
 <h2>Categories</h2>
 
-<p>@Html.ActionLink("Create New", "Create")</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>@Html.ActionLink("Create New", "Create")</p>
+}
 
 <div class="row">
     @foreach (var item in Model)
@@ -26,12 +29,15 @@
                         <button type="button" class="btn btn-secondary" disabled style="min-width: 15rem">
                             By @Html.DisplayFor(modelItem => item.User)
                         </button>
-                        <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
-                            <i class="icon ion-md-create"></i>
-                        </a>
-                        <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
-                            <i class="icon ion-md-trash"></i>
-                        </a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
+                                <i class="icon ion-md-create"></i>
+                            </a>
+                            <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
+                                <i class="icon ion-md-trash"></i>
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
