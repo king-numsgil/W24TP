@@ -63,6 +63,7 @@ namespace W24TP.Controllers
                                 CatID = p.Category.CatID,
                                 CategoryName = p.Category.CategoryName,
                                 User = p.AspNetUser.UserName,
+                                UserID = p.AspNetUser.Id,
                                 CreationDate = p.CreationDate,
                                 IsActive = p.IsActive,
                                 RepliesList = db.Reponses
@@ -181,6 +182,7 @@ namespace W24TP.Controllers
         public int CatID { get; set; }
         public string CategoryName { get; set; }
         public string User { get; set; }
+        public string UserID { get; set; }
         public DateTime CreationDate { get; set; }
         public bool? IsActive { get; set; }
         public List<Reponse> RepliesList { get; set; }

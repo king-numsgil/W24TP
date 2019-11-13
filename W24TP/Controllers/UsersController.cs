@@ -17,6 +17,8 @@ namespace W24TP.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            //var user_info = (from db.AspNetUsers)
+
             return View(db.AspNetUsers.ToList());
         }
 

@@ -11,7 +11,6 @@
     <thead>
         <tr>
             <th scope="col">Title</th>
-            @*<th scope="col">Texte</th>*@
             <th scope="col">Creation Date</th>
             <th scope="col"># Views</th>
             <th scope="col">IsActive?</th>
@@ -26,7 +25,6 @@
         {
             <tr>
                 <td scope="row">@Html.DisplayFor(modelItem => item.MsgTitle)</td>
-                @*<td>@Html.DisplayFor(modelItem => item.MsgText)</td>*@
                 <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
                 <td>@Html.DisplayFor(modelItem => item.Views)</td>
                 <td>@Html.DisplayFor(modelItem => item.IsActive)</td>

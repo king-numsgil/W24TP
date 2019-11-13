@@ -13,13 +13,13 @@
             </a>
             <h2>@Model.MsgTitle</h2>
             <h6 class="text-muted card-subtitle">
-                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Model.User | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
+                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
             </h6>
             
             
         </div>
         <dl class="dl-horizontal card">
-            <dd>
+            <dd style="margin:15px 15px 15px 15px">
                 @Model.MsgText
             </dd>
 
