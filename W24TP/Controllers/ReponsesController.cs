@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -46,10 +47,30 @@ namespace W24TP.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Authorize]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(int? id, string path, string reply)
+        {
+            var rep = new Reponse
+            {
+                MsgID = id,
+                IsActive = true,
+                RepText = reply,
+                CreationDate = DateTime.Now,
+                UserID = User.Identity.GetUserId()
+            };
+            db.Reponses.Add(rep);
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Messages", new { id, path });
+        }
+
         // POST: Reponses/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RepID,RepText,MsgID,UserID,CreationDate,IsActive")]
             Reponse reponse)
@@ -64,7 +85,7 @@ namespace W24TP.Controllers
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", reponse.UserID);
             ViewBag.MsgID = new SelectList(db.Messages, "MsgID", "MsgTitle", reponse.MsgID);
             return View(reponse);
-        }
+        }*/
 
         // GET: Reponses/Edit/5
         public ActionResult Edit(int? id)

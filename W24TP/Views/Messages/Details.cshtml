@@ -33,7 +33,7 @@
 {
     <div class="card border-info" style="margin-top: 8px;">
         <div class="card-body text-info">
-            <p class="card-text">@item.RepText</p>
+            @Html.Raw(item.RepText)
         </div>
         <div class="card-footer text-muted">
             @W24TP.Helpers.PrettyDate.Print(item.CreationDate) by <span class="font-italic">@item.AspNetUser.UserName</span>
@@ -43,7 +43,8 @@
 
 @if (Request.IsAuthenticated)
 {
-    <form method="post" action="#">
+    <form method="post" action="/Reponses/Create/@Model.MsgID?path=@ViewBag.OldUrl">
+        @Html.AntiForgeryToken()
         <div class="card border-success" style="margin-top:8px">
             <div class="card-header clearfix" style="padding: 6px 20px">
                 <p class="text-muted float-lg-left" style="margin: 0">Leave a Reply</p>
