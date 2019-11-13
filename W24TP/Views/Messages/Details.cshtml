@@ -1,23 +1,26 @@
-﻿@model W24TP.Controllers.PostDisplay
+﻿@using Microsoft.AspNet.Identity
+@model W24TP.Controllers.PostDisplay
 
 @{
     ViewBag.Title = "Details";
 }
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
-    <a href="/@ViewBag.OldUrl">Back to list</a>
-</p>
+<p><a href="/@ViewBag.OldUrl">Back to list</a></p>
 
 <div class="card border-primary">
-    <div class="card-header">
-        <a class="btn btn-secondary" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
-            <i class="icon ion-md-create"></i>
-        </a>
-        <h2>@Model.MsgTitle</h2>
-        <h6 class="text-muted card-subtitle">
-            @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
-        </h6>
+    <div class="card-header clearfix">
+        @if (User.Identity.GetUserId() == Model.UserID)
+        {
+            <a class="btn btn-secondary float-lg-right" href="/Messages/Edit/@(Model.MsgID)" role="button">
+                <i class="icon ion-md-create"></i>
+            </a>
+        }
+        <div class="float-lg-left">
+            <h2>@Model.MsgTitle</h2>
+            <h6 class="text-muted card-subtitle">
+                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
+            </h6>
+        </div>
     </div>
 
     <div class="card-body">
