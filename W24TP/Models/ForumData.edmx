@@ -71,13 +71,13 @@
             <PropertyRef Name="MsgID" />
           </Key>
           <Property Name="MsgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MsgTitle" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="MsgText" Type="nchar" MaxLength="10" />
+          <Property Name="MsgTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MsgText" Type="ntext" />
           <Property Name="CatID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="CreationDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="View" Type="nchar" MaxLength="10" />
-          <Property Name="IsActive" Type="bit" />
+          <Property Name="View" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Reponses">
           <Key>
@@ -87,8 +87,8 @@
           <Property Name="RepText" Type="text" />
           <Property Name="MsgID" Type="int" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" />
-          <Property Name="CreationDate" Type="smalldatetime" />
-          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreationDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Categories_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
@@ -326,13 +326,13 @@
             <PropertyRef Name="MsgID" />
           </Key>
           <Property Name="MsgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MsgTitle" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="MsgText" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MsgTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MsgText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CatID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="View" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="View" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Messages_AspNetUsers" FromRole="Messages" ToRole="AspNetUsers" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Messages_Categories" FromRole="Messages" ToRole="Categories" />
           <NavigationProperty Name="Reponses" Relationship="Self.FK_Reponses_Messages" FromRole="Messages" ToRole="Reponses" />
@@ -345,8 +345,8 @@
           <Property Name="RepText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MsgID" Type="Int32" />
           <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreationDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Reponses_AspNetUsers" FromRole="Reponses" ToRole="AspNetUsers" />
           <NavigationProperty Name="Message" Relationship="Self.FK_Reponses_Messages" FromRole="Reponses" ToRole="Messages" />
         </EntityType>
@@ -596,7 +596,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

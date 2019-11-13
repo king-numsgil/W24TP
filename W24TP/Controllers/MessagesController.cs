@@ -53,6 +53,7 @@ namespace W24TP.Controllers
             }
             else
             {
+                message.View++;
                 var post = (from p in db.Messages
                     where p.MsgID == id
                     select new PostDisplay
@@ -186,7 +187,7 @@ namespace W24TP.Controllers
     {
         public int MsgID { get; set; }
         public string MsgTitle { get; set; }
-        public string Views { get; set; }
+        public int Views { get; set; }
         public string MsgText { get; set; }
         public int CatID { get; set; }
         public string CategoryName { get; set; }
@@ -205,7 +206,7 @@ namespace W24TP.Controllers
         public string CategoryName { get; set; }
         public string User { get; set; }
         public DateTime CreationDate { get; set; }
-        public string Views { get; set; }
+        public int Views { get; set; }
         public bool? IsActive { get; set; }
     }
 }

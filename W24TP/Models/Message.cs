@@ -26,8 +26,8 @@ namespace W24TP.Models
         public int CatID { get; set; }
         public string UserID { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public string View { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public int View { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Category Category { get; set; }

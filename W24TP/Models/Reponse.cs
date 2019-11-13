@@ -20,6 +20,7 @@ namespace W24TP.Models
         public string UserID { get; set; }
         public System.DateTime CreationDate { get; set; }
         public bool IsActive { get; set; }
+    
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Message Message { get; set; }
     }
