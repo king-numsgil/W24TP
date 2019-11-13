@@ -31,4 +31,7 @@
         </div>
     </div>
 
-    
+    @foreach (var item in Model.RepliesList)
+    {
+        <div>@item.RepText</div>
+    }
