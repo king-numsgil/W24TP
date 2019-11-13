@@ -28,11 +28,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Reponse reponse = db.Reponses.Find(id);
             if (reponse == null)
             {
                 return HttpNotFound();
             }
+
             return View(reponse);
         }
 
@@ -49,7 +51,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RepID,RepText,MsgID,UserID,CreationDate,IsActive")] Reponse reponse)
+        public ActionResult Create([Bind(Include = "RepID,RepText,MsgID,UserID,CreationDate,IsActive")]
+            Reponse reponse)
         {
             if (ModelState.IsValid)
             {
@@ -70,11 +73,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Reponse reponse = db.Reponses.Find(id);
             if (reponse == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", reponse.UserID);
             ViewBag.MsgID = new SelectList(db.Messages, "MsgID", "MsgTitle", reponse.MsgID);
             return View(reponse);
@@ -85,7 +90,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RepID,RepText,MsgID,UserID,CreationDate,IsActive")] Reponse reponse)
+        public ActionResult Edit([Bind(Include = "RepID,RepText,MsgID,UserID,CreationDate,IsActive")]
+            Reponse reponse)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +99,7 @@ namespace W24TP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", reponse.UserID);
             ViewBag.MsgID = new SelectList(db.Messages, "MsgID", "MsgTitle", reponse.MsgID);
             return View(reponse);
@@ -105,11 +112,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Reponse reponse = db.Reponses.Find(id);
             if (reponse == null)
             {
                 return HttpNotFound();
             }
+
             return View(reponse);
         }
 
@@ -130,6 +139,7 @@ namespace W24TP.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

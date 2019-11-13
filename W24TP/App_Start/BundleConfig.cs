@@ -9,19 +9,19 @@ namespace W24TP
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery.min.js"));
+                "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jqBootstrapValidation.js"));
+                "~/Scripts/jqBootstrapValidation.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.bundle.min.js",
-                      "~/Scripts/clean-blog.js"));
+                "~/Scripts/bootstrap.bundle.min.js",
+                "~/Scripts/clean-blog.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/fontawesome.min.css",
-                      "~/Content/bootstrap.min.css",
-                      "~/Content/clean-blog.css"));
+                "~/Content/fontawesome.min.css",
+                "~/Content/bootstrap.min.css",
+                "~/Content/clean-blog.css"));
         }
     }
 }

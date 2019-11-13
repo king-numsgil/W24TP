@@ -29,11 +29,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
             if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
+
             return View(aspNetUser);
         }
 
@@ -48,7 +50,9 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public ActionResult Create([Bind(Include =
+                "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")]
+            AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -67,11 +71,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
             if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
+
             return View(aspNetUser);
         }
 
@@ -80,7 +86,9 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include =
+                "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")]
+            AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +96,7 @@ namespace W24TP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(aspNetUser);
         }
 
@@ -98,11 +107,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
             if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
+
             return View(aspNetUser);
         }
 
@@ -123,6 +134,7 @@ namespace W24TP.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

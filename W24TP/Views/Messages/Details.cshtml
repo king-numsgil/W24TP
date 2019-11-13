@@ -5,7 +5,7 @@
 }
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
+    @Html.ActionLink("Edit", "Edit", new {id = Model.MsgID}) |
     <a href="/@ViewBag.OldUrl">Back to list</a>
 </p>
 
@@ -16,7 +16,7 @@
         </a>
         <h2>@Model.MsgTitle</h2>
         <h6 class="text-muted card-subtitle">
-            @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
+            @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new {id = Model.UserID}) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new {id = Model.CatID})
         </h6>
     </div>
 

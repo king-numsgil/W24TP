@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(W24TP.Startup))]
+
 namespace W24TP
 {
     public partial class Startup

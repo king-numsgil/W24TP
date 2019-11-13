@@ -9,34 +9,40 @@
 <table class="table table-sm table-striped table-hover">
 
     <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Creation Date</th>
-            <th scope="col"># Views</th>
-            <th scope="col">IsActive?</th>
-            <th scope="col">Creator</th>
-            <th scope="col">Category</th>
-            <th scope="col"></th>
-        </tr>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Creation Date</th>
+        <th scope="col"># Views</th>
+        <th scope="col">IsActive?</th>
+        <th scope="col">Creator</th>
+        <th scope="col">Category</th>
+        <th scope="col"></th>
+    </tr>
     </thead>
 
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td scope="row">@Html.DisplayFor(modelItem => item.MsgTitle)</td>
-                <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.Views)</td>
-                <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-                <td>@Html.DisplayFor(modelItem => item.User)</td>
-                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
-                <td>
-                    <a href="/Messages/Edit/@item.MsgID"><i class="icon ion-md-create"></i></a>
-                    <a href="/Messages/Details/@item.MsgID"><i class="icon ion-md-clipboard"></i></a>
-                    <a href="/Messages/Delete/@item.MsgID"><i class="icon ion-md-trash"></i></a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td scope="row">@Html.DisplayFor(modelItem => item.MsgTitle)</td>
+            <td>@W24TP.Helpers.PrettyDate.Print(item.CreationDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.Views)</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+            <td>@Html.DisplayFor(modelItem => item.User)</td>
+            <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+            <td>
+                <a href="/Messages/Edit/@item.MsgID">
+                    <i class="icon ion-md-create"></i>
+                </a>
+                <a href="/Messages/Details/@item.MsgID">
+                    <i class="icon ion-md-clipboard"></i>
+                </a>
+                <a href="/Messages/Delete/@item.MsgID">
+                    <i class="icon ion-md-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
     </tbody>
 
 </table>

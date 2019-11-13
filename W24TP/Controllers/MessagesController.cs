@@ -21,17 +21,17 @@ namespace W24TP.Controllers
             //return View(messages.ToList());
 
             var messages = (from m in db.Messages
-                            select new MessageDisplay
-                            {
-                                MsgID = m.MsgID,
-                                MsgTitle = m.MsgTitle,
-                                Views = m.View,
-                                MsgText = m.MsgText,
-                                CategoryName = m.Category.CategoryName,
-                                User = m.AspNetUser.UserName,
-                                CreationDate = m.CreationDate,
-                                IsActive = m.IsActive
-                            }).ToList();
+                select new MessageDisplay
+                {
+                    MsgID = m.MsgID,
+                    MsgTitle = m.MsgTitle,
+                    Views = m.View,
+                    MsgText = m.MsgText,
+                    CategoryName = m.Category.CategoryName,
+                    User = m.AspNetUser.UserName,
+                    CreationDate = m.CreationDate,
+                    IsActive = m.IsActive
+                }).ToList();
             return View(messages);
         }
 
@@ -45,6 +45,7 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Message message = db.Messages.Find(id);
             if (message == null)
             {
@@ -53,24 +54,24 @@ namespace W24TP.Controllers
             else
             {
                 var post = (from p in db.Messages
-                            where p.MsgID == id
-                            select new PostDisplay
-                            {
-                                MsgID = p.MsgID,
-                                MsgTitle = p.MsgTitle,
-                                Views = p.View,
-                                MsgText = p.MsgText,
-                                CatID = p.Category.CatID,
-                                CategoryName = p.Category.CategoryName,
-                                User = p.AspNetUser.UserName,
-                                UserID = p.AspNetUser.Id,
-                                CreationDate = p.CreationDate,
-                                IsActive = p.IsActive,
-                                RepliesList = db.Reponses
-                                    .Where(r => r.MsgID == p.MsgID)
-                                    .OrderByDescending(r => r.CreationDate)
-                                    .ToList()
-                            }).FirstOrDefault();
+                    where p.MsgID == id
+                    select new PostDisplay
+                    {
+                        MsgID = p.MsgID,
+                        MsgTitle = p.MsgTitle,
+                        Views = p.View,
+                        MsgText = p.MsgText,
+                        CatID = p.Category.CatID,
+                        CategoryName = p.Category.CategoryName,
+                        User = p.AspNetUser.UserName,
+                        UserID = p.AspNetUser.Id,
+                        CreationDate = p.CreationDate,
+                        IsActive = p.IsActive,
+                        RepliesList = db.Reponses
+                            .Where(r => r.MsgID == p.MsgID)
+                            .OrderByDescending(r => r.CreationDate)
+                            .ToList()
+                    }).FirstOrDefault();
                 return View(post);
             }
         }
@@ -88,7 +89,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MsgID,MsgTitle,MsgText,CatID,UserID,CreationDate,View,IsActive")] Message message)
+        public ActionResult Create([Bind(Include = "MsgID,MsgTitle,MsgText,CatID,UserID,CreationDate,View,IsActive")]
+            Message message)
         {
             if (ModelState.IsValid)
             {
@@ -109,11 +111,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Message message = db.Messages.Find(id);
             if (message == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", message.UserID);
             ViewBag.CatID = new SelectList(db.Categories, "CatID", "CategoryName", message.CatID);
             return View(message);
@@ -124,7 +128,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MsgID,MsgTitle,MsgText,CatID,UserID,CreationDate,View,IsActive")] Message message)
+        public ActionResult Edit([Bind(Include = "MsgID,MsgTitle,MsgText,CatID,UserID,CreationDate,View,IsActive")]
+            Message message)
         {
             if (ModelState.IsValid)
             {
@@ -132,6 +137,7 @@ namespace W24TP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", message.UserID);
             ViewBag.CatID = new SelectList(db.Categories, "CatID", "CategoryName", message.CatID);
             return View(message);
@@ -144,11 +150,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Message message = db.Messages.Find(id);
             if (message == null)
             {
                 return HttpNotFound();
             }
+
             return View(message);
         }
 
@@ -169,6 +177,7 @@ namespace W24TP.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

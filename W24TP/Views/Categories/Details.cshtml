@@ -14,7 +14,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" style="padding: 0">
                     <div class="btn-group" style="width: 100%" role="group" aria-label="Category Buttons">
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.CatID }, new
+                        @Html.ActionLink("Edit", "Edit", new {id = Model.CatID}, new
                         {
                             @class = "btn btn-light",
                             style = "border-top-left-radius: 0",
@@ -33,14 +33,16 @@
     </div>
 </div>
 
-<hr />
+<hr/>
 
 @foreach (var msg in Model.Messages)
 {
     <div class="row justify-content-center" style="margin-bottom: 1rem">
         <div class="col-9">
             <div class="card">
-                <div class="card-header">@msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName</span></div>
+                <div class="card-header">
+                    @msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName</span>
+                </div>
                 <div class="card-body">
                     <p class="card-text">@msg.MsgText</p>
                 </div>
@@ -56,15 +58,15 @@
                         }
 
                         @Html.ActionLink("View", "Details", "Messages", new
-                   {
-                       id = msg.MsgID,
-                       path = "Categories/Details/" + Model.CatID
-                   }, new
-                   {
-                       @class = "btn btn-info",
-                       role = "button",
-                       style = "border-top-right-radius: 0"
-                   })
+                        {
+                            id = msg.MsgID,
+                            path = "Categories/Details/" + Model.CatID
+                        }, new
+                        {
+                            @class = "btn btn-info",
+                            role = "button",
+                            style = "border-top-right-radius: 0"
+                        })
                     </div>
                 </div>
             </div>

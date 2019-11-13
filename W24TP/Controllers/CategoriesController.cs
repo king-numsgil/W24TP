@@ -21,22 +21,22 @@ namespace W24TP.Controllers
             //return View(categories.ToList());
 
             var categories = (from c in db.Categories
-                              select new CategoryDisplay
-                              {
-                                  CatID = c.CatID,
-                                  CategoryName = c.CategoryName,
-                                  CreationDate = c.CreationDate,
-                                  User = c.AspNetUser.UserName,
-                                  IsActive = c.IsActive,
-                                  LastThreePosts = db.Messages
-                                    .Where(t => t.CatID == c.CatID)
-                                    .OrderByDescending(t => t.CreationDate)
-                                    .Take(3).ToList(),
-                                  Messages = db.Messages
-                                      .Where(t => t.CatID == c.CatID)
-                                      .OrderByDescending(t => t.CreationDate)
-                                      .ToList()
-                              }).ToList();
+                select new CategoryDisplay
+                {
+                    CatID = c.CatID,
+                    CategoryName = c.CategoryName,
+                    CreationDate = c.CreationDate,
+                    User = c.AspNetUser.UserName,
+                    IsActive = c.IsActive,
+                    LastThreePosts = db.Messages
+                        .Where(t => t.CatID == c.CatID)
+                        .OrderByDescending(t => t.CreationDate)
+                        .Take(3).ToList(),
+                    Messages = db.Messages
+                        .Where(t => t.CatID == c.CatID)
+                        .OrderByDescending(t => t.CreationDate)
+                        .ToList()
+                }).ToList();
             return View(categories);
         }
 
@@ -47,11 +47,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Category category = db.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(new CategoryDisplay
             {
                 CatID = category.CatID,
@@ -82,7 +84,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CatID,CategoryName,IsActive,CreationDate,User")] Category category)
+        public ActionResult Create([Bind(Include = "CatID,CategoryName,IsActive,CreationDate,User")]
+            Category category)
         {
             if (ModelState.IsValid)
             {
@@ -102,11 +105,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Category category = db.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.UserID);
             return View(category);
         }
@@ -116,7 +121,8 @@ namespace W24TP.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CatID,CategoryName,IsActive,CreationDate,User")] Category category)
+        public ActionResult Edit([Bind(Include = "CatID,CategoryName,IsActive,CreationDate,User")]
+            Category category)
         {
             if (ModelState.IsValid)
             {
@@ -124,6 +130,7 @@ namespace W24TP.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email", category.UserID);
             return View(category);
         }
@@ -135,11 +142,13 @@ namespace W24TP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Category category = db.Categories.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
             }
+
             return View(category);
         }
 
@@ -160,6 +169,7 @@ namespace W24TP.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
