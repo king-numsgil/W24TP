@@ -7,58 +7,58 @@
 
 <p>@Html.ActionLink("Create New", "Create")</p>
 
-<div class="row mx-lg-n1">
+<div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-12 px-lg-1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-            <div class="row justify-content-center">
-                <div class="col">
-                    <div class="btn-group" role="group" aria-label="Info and Edit" style="width: 100%">
-                        @Html.ActionLink(item.CategoryName,
-                            "Details",
-                            new { id = item.CatID},
-                            new
-                            {
-                                @class = "btn btn-outline-success btn-block",
-                                role = "button"
-                            })
-
-                        <button type="button" class="btn btn-secondary" disabled style="min-width: 10rem">
-                            By @Html.DisplayFor(modelItem => item.User)
-                        </button>
-                        <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
-                            <i class="icon ion-md-create"></i>
-                        </a>
-                        <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
-                            <i class="icon ion-md-trash"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-group">
-            @foreach (var post in item.LastThreePosts)
-            {
-            <div class="card text-center" style="width: 19.4rem">
-                <h5 class="card-header" style="padding: 0">
-                    @Html.ActionLink(post.MsgTitle,
+    <div class="col-12" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Info and Edit" style="width: 100%">
+                    @Html.ActionLink(item.CategoryName,
                         "Details",
-                        "Messages",
-                        new { id = post.MsgID, path = "Categories" },
+                        new { id = item.CatID},
                         new
                         {
-                            @class = "btn btn-post btn-block"
+                            @class = "btn btn-outline-success btn-block",
+                            role = "button"
                         })
-                </h5>
-                <div class="card-body">
-                    <p class="card-text" style="margin-top: 0">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</small>
+
+                    <button type="button" class="btn btn-secondary" disabled style="min-width: 15rem">
+                        By @Html.DisplayFor(modelItem => item.User)
+                    </button>
+                    <a class="btn btn-secondary" href="/Categories/Edit/@item.CatID" role="button">
+                        <i class="icon ion-md-create"></i>
+                    </a>
+                    <a class="btn btn-secondary" href="/Categories/Delete/@item.CatID" role="button">
+                        <i class="icon ion-md-trash"></i>
+                    </a>
                 </div>
             </div>
+        </div>
+
+        <div class="card-group" style="padding-top: 4px">
+            @foreach (var post in item.LastThreePosts)
+            {
+                <div class="card text-center">
+                    <h5 class="card-header" style="padding: 0">
+                        @Html.ActionLink(post.MsgTitle,
+                            "Details",
+                            "Messages",
+                            new { id = post.MsgID, path = "Categories" },
+                            new
+                            {
+                                @class = "btn btn-post btn-block"
+                            })
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text" style="margin-top: 0">@W24TP.Helpers.PrettyShortText.Print(post.MsgText, 10)</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">By @post.AspNetUser.UserName ~ @W24TP.Helpers.PrettyDate.Print(post.CreationDate)</small>
+                    </div>
+                </div>
             }
         </div>
+    </div>
     }
 </div>
