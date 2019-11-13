@@ -17,13 +17,13 @@
                         @Html.ActionLink("Edit", "Edit", new { id = Model.CatID }, new
                         {
                             @class = "btn btn-light",
-                            style = "border-radius: 0",
+                            style = "border-top-left-radius: 0",
                             role = "button"
                         })
                         @Html.ActionLink("Back to List", "Index", null, new
                         {
                             @class = "btn btn-light",
-                            style = "border-radius: 0",
+                            style = "border-top-right-radius: 0",
                             role = "button"
                         })
                     </div>
@@ -48,14 +48,14 @@
                     <div class="btn-group" style="width: 100%">
                         @if (msg.IsActive.HasValue && msg.IsActive.Value)
                         {
-                            <a class="btn btn-success disabled" role="button" href="#">Active</a>
+                            <a class="btn btn-success disabled" role="button" href="#" style="border-top-left-radius: 0">Active</a>
                         }
                         else
                         {
-                            <a class="btn btn-danger disabled" role="button" href="#">Inactive</a>
+                            <a class="btn btn-danger disabled" role="button" href="#" style="border-top-left-radius: 0">Inactive</a>
                         }
 
-                        <a class="btn btn-info" role="button" href="#">View</a>
+                        <a class="btn btn-info" role="button" href="#" style="border-top-right-radius: 0">View</a>
                     </div>
                 </div>
             </div>
