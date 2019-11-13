@@ -4,18 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4bfc72b1f1be4d9ea04807a9da5a1d84" Name="Diagram1">
+      <Diagram DiagramId="99606cb000e344ce86501c47ac82ae9e" Name="Diagram1">
         <EntityTypeShape EntityType="ForumONIModel.AspNetRole" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.AspNetUserClaim" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.AspNetUserLogin" Width="1.5" PointX="0.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.AspNetUser" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.Category" Width="1.5" PointX="5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.Message" Width="1.5" PointX="5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ForumONIModel.Reponse" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.AspNetUserClaim" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.AspNetUserLogin" Width="1.5" PointX="0.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.AspNetUser" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Category" Width="1.5" PointX="5.125" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Message" Width="1.5" PointX="5.125" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForumONIModel.Reponse" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="ForumONIModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="ForumONIModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="ForumONIModel.FK_Categories_AspNetUsers" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="ForumONIModel.FK_Categories_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="ForumONIModel.FK_Messages_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="ForumONIModel.FK_Reponses_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="ForumONIModel.FK_Messages_Categories" ManuallyRouted="false" />
