@@ -5,8 +5,7 @@
     }
 
 
-    <div>
-        <!--<h4>Message</h4>-->
+    <div class="card">
         <div class="card-header">
             <a class="btn btn-secondary" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
                 <i class="icon ion-md-create"></i>
@@ -14,28 +13,18 @@
             <h2>@Model.MsgTitle</h2>
             <h6 class="text-muted card-subtitle">
                 @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
-            </h6>
-            
-            
+            </h6>                        
         </div>
-        <dl class="dl-horizontal card">
-            <dd style="margin:15px 15px 15px 15px">
+
+        <dl class="dl-horizontal card-body">
+            <dd>
                 @Model.MsgText
             </dd>
-
-            <dd>
-                Views : @Model.Views
-            </dd>
-
-            <dd>
-                IsActive : @Model.IsActive
-            </dd>
-
-            <dd>
-                CategoryName : @Model.CategoryName
-            </dd>
-
         </dl>
+
+        <div class="card-footer text-muted">
+            Views : @Model.Views | IsActive : @Model.IsActive
+        </div>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
