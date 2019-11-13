@@ -1,37 +1,45 @@
 ﻿@model W24TP.Controllers.PostDisplay
 
-    @{
-        ViewBag.Title = "Details";
-    }
+@{
+    ViewBag.Title = "Details";
+}
 
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
-        <a href="/@ViewBag.OldUrl">Back to list</a>
-    </p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
+    <a href="/@ViewBag.OldUrl">Back to list</a>
+</p>
 
-    <div class="card">
-        <div class="card-header">
-            <a class="btn btn-secondary" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
-                <i class="icon ion-md-create"></i>
-            </a>
-            <h2>@Model.MsgTitle</h2>
-            <h6 class="text-muted card-subtitle">
-                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
-            </h6>                        
-        </div>
-
-        <dl class="dl-horizontal card-body">
-            <dd>
-                @Model.MsgText
-            </dd>
-        </dl>
-
-        <div class="card-footer text-muted">
-            Viewed @Model.Views times | IsActive = @Model.IsActive
-        </div>
+<div class="card border-primary">
+    <div class="card-header">
+        <a class="btn btn-secondary" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
+            <i class="icon ion-md-create"></i>
+        </a>
+        <h2>@Model.MsgTitle</h2>
+        <h6 class="text-muted card-subtitle">
+            @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
+        </h6>
     </div>
 
-    @foreach (var item in Model.RepliesList)
-    {
-        <div>@item.RepText</div>
-    }
+    <div class="card-body">
+        <p class="card-text">@Model.MsgText</p>
+    </div>
+
+    <div class="card-footer text-muted">
+        Viewed @Model.Views times | IsActive = @Model.IsActive
+    </div>
+</div>
+
+@foreach (var item in Model.RepliesList)
+{
+    <div class="card border-info" style="margin-top: 8px;">
+        @*<div class="card-header">
+            @item.AspNetUser.UserName
+        </div>*@
+        <div class="card-body text-info">
+            <p class="card-text">@item.RepText</p>
+        </div>
+        <div class="card-footer text-muted">
+            @W24TP.Helpers.PrettyDate.Print(item.CreationDate) by <span class="font-italic">@item.AspNetUser.UserName</span>
+        </div>
+    </div>
+}

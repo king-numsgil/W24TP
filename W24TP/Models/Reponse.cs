@@ -18,9 +18,8 @@ namespace W24TP.Models
         public string RepText { get; set; }
         public Nullable<int> MsgID { get; set; }
         public string UserID { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-    
+        public System.DateTime CreationDate { get; set; }
+        public bool IsActive { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Message Message { get; set; }
     }
