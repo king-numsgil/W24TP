@@ -32,6 +32,7 @@ namespace W24TP.Models
         public string SecurityStamp { get; set; }
         public string PhoneNumber { get; set; }
         public bool PhoneNumberConfirmed { get; set; }
+        public bool IsAdmin { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }

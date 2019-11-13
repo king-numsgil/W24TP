@@ -11,12 +11,10 @@ namespace W24TP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class Reponse
     {
         public int RepID { get; set; }
-        [AllowHtml]
         public string RepText { get; set; }
         public Nullable<int> MsgID { get; set; }
         public string UserID { get; set; }
