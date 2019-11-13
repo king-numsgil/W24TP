@@ -43,15 +43,17 @@
 
 @if (Request.IsAuthenticated)
 {
-    <div class="card">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group" style="margin-top:8px">
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+    <form method="post" action="#">
+        <div class="card border-success" style="margin-top:8px">
+            <div class="card-header clearfix" style="padding: 6px 20px">
+                <p class="text-muted float-lg-left" style="margin: 0">Leave a Reply</p>
+                <button type="submit" class="btn btn-sm btn-success float-lg-right">Send</button>
+            </div>
+            <div class="card-body" style="padding: 8px">
+                <textarea name="reply"></textarea>
             </div>
         </div>
-    </div>
+    </form>
 }
 else
 {
