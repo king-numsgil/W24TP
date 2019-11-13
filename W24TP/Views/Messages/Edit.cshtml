@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MsgText, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MsgText, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.TextAreaFor(model => model.MsgText, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.MsgText, "", new {@class = "text-danger"})
             </div>
         </div>
@@ -41,29 +41,29 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.UserID, "UserID", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.DropDownList("UserID", null, htmlAttributes: new {@class = "form-control"})
                 @Html.ValidationMessageFor(model => model.UserID, "", new {@class = "text-danger"})
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.CreationDate, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CreationDate, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.CreationDate, "", new {@class = "text-danger"})
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.View, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.View, new {htmlAttributes = new {@class = "form-control"}})
                 @Html.ValidationMessageFor(model => model.View, "", new {@class = "text-danger"})
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new {@class = "control-label col-md-2"})
@@ -77,7 +77,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default"/>
+                <input type="submit" value="Save" class="btn btn-default" />
+                <a class="btn btn-success" href="/Messages/Edit/@(Model.MsgID)" role="button" style="float:right;border-radius:15px;">
+                    Save
+                </a>
             </div>
         </div>
     </div>
