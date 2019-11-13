@@ -4,6 +4,10 @@
         ViewBag.Title = "Details";
     }
 
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
+        <a href="/@ViewBag.OldUrl">Back to list</a>
+    </p>
 
     <div class="card">
         <div class="card-header">
@@ -26,7 +30,5 @@
             Viewed @Model.Views times | IsActive = @Model.IsActive
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
-        <a href="/@ViewBag.OldUrl">Back to list</a>
-    </p>
+
+    
