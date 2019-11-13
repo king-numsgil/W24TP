@@ -55,7 +55,16 @@
                             <a class="btn btn-danger disabled" role="button" href="#" style="border-top-left-radius: 0">Inactive</a>
                         }
 
-                        <a class="btn btn-info" role="button" href="#" style="border-top-right-radius: 0">View</a>
+                        @Html.ActionLink("View", "Details", "Messages", new
+                   {
+                       id = msg.MsgID,
+                       path = "Categories/Details/" + Model.CatID
+                   }, new
+                   {
+                       @class = "btn btn-info",
+                       role = "button",
+                       style = "border-top-right-radius: 0"
+                   })
                     </div>
                 </div>
             </div>
