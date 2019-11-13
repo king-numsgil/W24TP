@@ -401,6 +401,10 @@ a.btn.btn-post:hover {
     color: #fff;
 }
 
+div.card > div.card-body > p.card-text:first-child {
+    margin-top: 0;
+}
+
 /*.btn {
   font-size: 14px;
   font-weight: 800;
