@@ -72,7 +72,7 @@ namespace W24TP.Controllers
                     IsActive = message.IsActive,
                     RepliesList = db.Reponses
                             .Where(r => r.MsgID == message.MsgID)
-                            .OrderByDescending(r => r.CreationDate)
+                            .OrderBy(r => r.CreationDate)
                             .ToList()
                 });
             }

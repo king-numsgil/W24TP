@@ -41,7 +41,7 @@
         <div class="col-9">
             <div class="card">
                 <div class="card-header">
-                    @msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName</span>
+                    @msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName | @W24TP.Helpers.PrettyDate.Print(msg.CreationDate)</span>
                 </div>
                 <div class="card-body">
                     <p class="card-text">@msg.MsgText</p>
