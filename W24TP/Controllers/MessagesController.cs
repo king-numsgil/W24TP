@@ -14,27 +14,6 @@ namespace W24TP.Controllers
     {
         private ForumONIEntities db = new ForumONIEntities();
 
-        // GET: Messages
-        public ActionResult Index()
-        {
-            //var messages = db.Messages.Include(m => m.AspNetUser).Include(m => m.Category);
-            //return View(messages.ToList());
-
-            var messages = (from m in db.Messages
-                select new MessageDisplay
-                {
-                    MsgID = m.MsgID,
-                    MsgTitle = m.MsgTitle,
-                    Views = m.View,
-                    MsgText = m.MsgText,
-                    CategoryName = m.Category.CategoryName,
-                    User = m.AspNetUser.UserName,
-                    CreationDate = m.CreationDate,
-                    IsActive = m.IsActive
-                }).ToList();
-            return View(messages);
-        }
-
         // GET: Messages/Details/5
         public ActionResult Details(int? id, string path)
         {
