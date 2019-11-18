@@ -17,9 +17,25 @@ namespace W24TP.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            //var user_info = (from db.AspNetUsers)
+            return View(db.AspNetUsers.Select(yousir => new UserDisplay
+            {
+                UserID = yousir.Id,
+                UserName = yousir.UserName,
+                NbrSub = db.Messages
+                    .Where(t => t.UserID == yousir.Id)
+                    .Count(),
+                NbrRep = db.Reponses
+                    .Where(t => t.UserID == yousir.Id)
+                    .Count(),
+                LastDate = (db.Messages
+                    .Where(t => t.UserID == yousir.Id)
+                    .OrderByDescending(t=> t.CreationDate)
+                    .Select(t => t.CreationDate)
+                    .FirstOrDefault())
+                //(db.Reponses.Where(t => t.UserID == yousir.Id).OrderByDescending(t=> t.CreationDate).First())
+            }));
 
-            return View(db.AspNetUsers.ToList());
+            //return View(db.AspNetUsers.ToList());
         }
 
         // GET: Users/Details/5
@@ -137,5 +153,14 @@ namespace W24TP.Controllers
 
             base.Dispose(disposing);
         }
+    }
+
+    public class UserDisplay
+    {
+        public string UserID { get; set; }
+        public string UserName { get; set; }
+        public int NbrSub { get; set; }
+        public int NbrRep { get; set; }
+        public DateTime? LastDate { get; set; }
     }
 }
