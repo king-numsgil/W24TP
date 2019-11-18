@@ -44,7 +44,7 @@
                     @msg.MsgTitle <span class="font-italic text-muted">by @msg.AspNetUser.UserName | @W24TP.Helpers.PrettyDate.Print(msg.CreationDate)</span>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">@msg.MsgText</p>
+                    @Html.Raw(Model.MsgText)
                 </div>
                 <div class="card-footer" style="padding: 0">
                     <div class="btn-group" style="width: 100%">

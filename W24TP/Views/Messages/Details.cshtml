@@ -24,7 +24,7 @@
     </div>
 
     <div class="card-body">
-        <p class="card-text">@Model.MsgText</p>
+        @Html.Raw(Model.MsgText)
     </div>
 
     <div class="card-footer text-muted">
@@ -35,7 +35,7 @@
 @foreach (var item in Model.RepliesList)
 {
     <div class="card border-info" style="margin-top: 8px;">
-        <div class="card-body text-info">
+        <div class="card-body">
             @Html.Raw(item.RepText)
         </div>
         <div class="card-footer text-muted">
