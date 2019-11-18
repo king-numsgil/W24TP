@@ -9,7 +9,7 @@
 
 <div class="card border-primary">
     <div class="card-header clearfix">
-        @if (User.Identity.GetUserId() == Model.UserID)
+        @if (User.Identity.GetUserId() == Model.UserID || User.IsInRole("Admin"))
         {
             <a class="btn btn-secondary float-lg-right" href="/Messages/Edit/@(Model.MsgID)" role="button">
                 <i class="icon ion-md-create"></i>
