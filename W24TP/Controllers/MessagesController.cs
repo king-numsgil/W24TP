@@ -116,7 +116,7 @@ namespace W24TP.Controllers
             {
                 db.Entry(message).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = message.MsgID, path = "Categories" });
             }
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", message.UserID);
@@ -149,7 +149,7 @@ namespace W24TP.Controllers
             Message message = db.Messages.Find(id);
             db.Messages.Remove(message);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Categories", new { id = message.CatID });
         }
 
         protected override void Dispose(bool disposing)
