@@ -11,7 +11,8 @@ namespace W24TP.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Message
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace W24TP.Models
     
         public int MsgID { get; set; }
         public string MsgTitle { get; set; }
+        [AllowHtml]
         public string MsgText { get; set; }
         public int CatID { get; set; }
         public string UserID { get; set; }
