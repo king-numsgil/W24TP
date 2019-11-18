@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace W24TP.Helpers
 {
@@ -9,7 +7,9 @@ namespace W24TP.Helpers
     {
         public static string Print(string message, int num_words)
         {
-            return string.Join(" ", message.Split().Take(num_words)) + "...";
+            var stripped = Regex.Replace(message, "<[^>]*(>|$)", string.Empty);
+            stripped = Regex.Replace(stripped, "&[a-zA-Z]+;", string.Empty);
+            return string.Join(" ", stripped.Split().Take(num_words)) + "...";
         }
     }
 }
