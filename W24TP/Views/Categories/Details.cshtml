@@ -14,12 +14,24 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" style="padding: 0">
                     <div class="btn-group" style="width: 100%" role="group" aria-label="Category Buttons">
-                        @Html.ActionLink("Edit", "Edit", new {id = Model.CatID}, new
+                        @if (Request.IsAuthenticated)
                         {
-                            @class = "btn btn-light",
-                            style = "border-top-left-radius: 0",
-                            role = "button"
-                        })
+                            @Html.ActionLink("Add Post", "Create", "Messages", null, new
+                                {
+                                    @class = "btn btn-light",
+                                    style = "border-top-right-radius: 0",
+                                    role = "button"
+                                })
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Edit Category", "Edit", new {id = Model.CatID}, new
+                                {
+                                    @class = "btn btn-light",
+                                    style = "border-top-left-radius: 0",
+                                    role = "button"
+                                })
+                        }
                         @Html.ActionLink("Back to List", "Index", null, new
                         {
                             @class = "btn btn-light",
