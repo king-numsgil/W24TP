@@ -15,10 +15,15 @@ namespace W24TP.Controllers
         private ForumONIEntities db = new ForumONIEntities();
 
         // GET: Messages/Details/5
-        public ActionResult Details(int? id, string path)
+        public ActionResult Details(int? id, string path, int? page)
         {
             //Retiens l'url d'ou l'utilisateur arrive pour un 'Back to List' plus dynamique
             ViewBag.OldUrl = path;
+
+            if (!page.HasValue)
+            {
+                page = 1;
+            }
 
             if (id == null)
             {
