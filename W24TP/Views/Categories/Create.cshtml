@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-
+@using Microsoft.AspNet.Identity
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -33,32 +33,20 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CreationDate, "", new {@class = "text-danger"})
-            </div>
-        </div>
+        @Html.Hidden("CreationDate", DateTime.Now)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AspNetUser, "User", htmlAttributes: new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.DropDownList("User", null, htmlAttributes: new {@class = "form-control"})
-                @Html.ValidationMessageFor(model => model.AspNetUser, "", new {@class = "text-danger"})
-            </div>
-        </div>
+        @Html.Hidden("User", User.Identity.GetUserName())
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
+                <input type="submit" value="Create" class="btn btn-outline-success"/>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="btn-group" role="group" aria-label="" style="width:85%">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-info", role = "button" })
 </div>
 
 @section Scripts {

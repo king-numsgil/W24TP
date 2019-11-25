@@ -7,7 +7,9 @@
 
 @if (User.IsInRole("Admin"))
 {
-    <p>@Html.ActionLink("Create New", "Create")</p>
+    <div class="btn-group" role="group" aria-label="" style="width:30%">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-outline-info", role = "button" })
+    </div>
 }
 
 <div class="row">
