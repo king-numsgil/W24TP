@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using W24TP.Models;
+using PagedList;
 
 namespace W24TP.Controllers
 {
@@ -19,11 +20,6 @@ namespace W24TP.Controllers
         {
             //Retiens l'url d'ou l'utilisateur arrive pour un 'Back to List' plus dynamique
             ViewBag.OldUrl = path;
-
-            if (!page.HasValue)
-            {
-                page = 1;
-            }
 
             if (id == null)
             {
@@ -57,7 +53,7 @@ namespace W24TP.Controllers
                     RepliesList = db.Reponses
                             .Where(r => r.MsgID == message.MsgID)
                             .OrderBy(r => r.CreationDate)
-                            .ToList()
+                            .ToPagedList(page ?? 1, 8) as PagedList<Reponse>
                 });
             }
         }
@@ -180,7 +176,7 @@ namespace W24TP.Controllers
         public string UserID { get; set; }
         public DateTime CreationDate { get; set; }
         public bool IsActive { get; set; }
-        public List<Reponse> RepliesList { get; set; }
+        public PagedList<Reponse> RepliesList { get; set; }
     }
 
     public class MessageDisplay

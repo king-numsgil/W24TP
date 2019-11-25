@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @model W24TP.Controllers.PostDisplay
 
 @{
@@ -32,6 +35,8 @@
     </div>
 </div>
 
+@Html.PagedListPager(Model.RepliesList, page => Url.Action("Details", new { id = Model.MsgID, path = ViewBag.OldUrl, page }))
+
 @foreach (var item in Model.RepliesList)
 {
     <div class="card border-info" style="margin-top: 8px;">
@@ -43,6 +48,8 @@
         </div>
     </div>
 }
+
+@Html.PagedListPager(Model.RepliesList, page => Url.Action("Details", new { id = Model.MsgID, path = ViewBag.OldUrl, page }))
 
 @if (Request.IsAuthenticated)
 {
