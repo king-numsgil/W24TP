@@ -21,7 +21,9 @@
         <div class="float-lg-left">
             <h2>@Model.MsgTitle</h2>
             <h6 class="text-muted card-subtitle">
-                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }) | @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID })
+                @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By
+                @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }, null) |
+                @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID }, null)
             </h6>
         </div>
     </div>
