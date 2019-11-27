@@ -47,13 +47,27 @@ namespace W24TP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            AspNetUser user = db.AspNetUsers.Find(id);
-            if (user == null)
+            AspNetUser yousir = db.AspNetUsers.Find(id);
+            if (yousir == null)
             {
                 return HttpNotFound();
             }
 
-            return View(user);
+            return View(new UserDisplay
+            {
+                UserID = yousir.Id,
+                UserName = yousir.UserName,
+                NbrSub = db.Messages.Count(t => t.UserID == yousir.Id),
+                NbrRep = db.Reponses.Count(t => t.UserID == yousir.Id),
+                LastDate = db.Messages
+                    .Where(t => t.UserID == yousir.Id)
+                    .Select(t => t.CreationDate)
+                    .Union(db.Reponses
+                        .Where(t => t.UserID == yousir.Id)
+                        .Select(t => t.CreationDate))
+                    .OrderByDescending(t => t)
+                    .FirstOrDefault()
+            });
         }
 
         // GET: Users/Create
