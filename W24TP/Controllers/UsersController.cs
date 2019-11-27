@@ -14,6 +14,11 @@ namespace W24TP.Controllers
     {
         private ForumONIEntities db = new ForumONIEntities();
 
+        private static DateTime Max(DateTime first, DateTime second)
+        {
+            return first > second ? first : second;
+        }
+
         // GET: Users
         public ActionResult Index()
         {
@@ -21,21 +26,17 @@ namespace W24TP.Controllers
             {
                 UserID = yousir.Id,
                 UserName = yousir.UserName,
-                NbrSub = db.Messages
+                NbrSub = db.Messages.Count(t => t.UserID == yousir.Id),
+                NbrRep = db.Reponses.Count(t => t.UserID == yousir.Id),
+                LastDate = db.Messages
                     .Where(t => t.UserID == yousir.Id)
-                    .Count(),
-                NbrRep = db.Reponses
-                    .Where(t => t.UserID == yousir.Id)
-                    .Count(),
-                LastDate = (db.Messages
-                    .Where(t => t.UserID == yousir.Id)
-                    .OrderByDescending(t=> t.CreationDate)
                     .Select(t => t.CreationDate)
-                    .FirstOrDefault())
-                //(db.Reponses.Where(t => t.UserID == yousir.Id).OrderByDescending(t=> t.CreationDate).First())
+                    .Union(db.Reponses
+                        .Where(t => t.UserID == yousir.Id)
+                        .Select(t => t.CreationDate))
+                    .OrderByDescending(t => t)
+                    .FirstOrDefault()
             }));
-
-            //return View(db.AspNetUsers.ToList());
         }
 
         // GET: Users/Details/5
@@ -46,13 +47,13 @@ namespace W24TP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
-            if (aspNetUser == null)
+            AspNetUser user = db.AspNetUsers.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
 
-            return View(aspNetUser);
+            return View(user);
         }
 
         // GET: Users/Create
