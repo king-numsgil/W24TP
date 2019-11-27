@@ -3,7 +3,6 @@
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @model W24TP.Controllers.PostDisplay
-
 @{
     ViewBag.Title = "Details";
 }
@@ -22,8 +21,14 @@
             <h2>@Model.MsgTitle</h2>
             <h6 class="text-muted card-subtitle">
                 @W24TP.Helpers.PrettyDate.Print(Model.CreationDate) | By
-                @Html.ActionLink(Model.User, "Details", "Users", new { id = Model.UserID }, null) |
-                @Html.ActionLink(Model.CategoryName, "Details", "Categories", new { id = Model.CatID }, null)
+                @Html.ActionLink(Model.User, "Details", "Users", new
+                {
+                    id = Model.UserID
+                }, null) |
+                @Html.ActionLink(Model.CategoryName, "Details", "Categories", new
+                {
+                    id = Model.CatID
+                }, null)
             </h6>
         </div>
     </div>
@@ -37,7 +42,10 @@
     </div>
 </div>
 
-@Html.PagedListPager(Model.RepliesList, page => Url.Action("Details", new { id = Model.MsgID, path = ViewBag.OldUrl, page }))
+@Html.PagedListPager(Model.RepliesList, page => Url.Action("Details", new
+{
+    id = Model.MsgID, path = ViewBag.OldUrl, page
+}))
 
 @foreach (var item in Model.RepliesList)
 {
@@ -73,7 +81,8 @@ else
     <div class="card border-danger" style="margin-top:30px">
         <div class="card-body">
             <p class="card-text">
-                @Html.ActionLink("Log in", "Login", "Account") or @Html.ActionLink("create account", "Register", "Account") to reply
+                @Html.ActionLink("Log in", "Login", "Account") or
+                @Html.ActionLink("create account", "Register", "Account") to reply
             </p>
         </div>
     </div>
